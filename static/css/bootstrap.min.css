@@ -4,6 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -1564,6 +1565,11 @@ progress {
     }
 }
 
+.about-fixed{
+    position: unset;
+    top: 150px;
+}
+
 @media(min-width: 1200px) {
     .col-xl {
         flex: 1 0 0%
@@ -1631,12 +1637,17 @@ progress {
 
     .col-xl-5 {
         flex: 0 0 auto;
-        width: 41.6666666667%
+        width: 41.6666666667%;
     }
 
     .col-xl-6 {
         flex: 0 0 auto;
         width: 50%
+    }
+
+    .about-fixed{
+        position: sticky;
+        top: 150px;
     }
 
     .col-xl-7 {
@@ -12544,9 +12555,10 @@ fieldset:disabled .btn {
 
 /* Custom Added */
 .absolute-top {
+    width: auto;
     position:fixed;
     top: 0;
-    z-index: 1020
+    z-index: 100;
 }
 
 @media(min-width: 576px) {
