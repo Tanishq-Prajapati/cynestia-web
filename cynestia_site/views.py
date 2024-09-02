@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from .utility.validators import Validators
 from .models import CustomModel, BlogDetail
+from django.core.cache import caches
+from ipware import get_client_ip
 
 # Create your views here.
 validator = Validators()
@@ -99,6 +101,9 @@ class BlogsGrid(View):
 class BlogDetails(View):
     def get(self, request, slug):
         try:
+            # getting the IP_ADDR of the client
+            ip, router = get_client_ip(request)
+
             # getting the details of the blog
             contextual_data = {
                 "blog_title":"Blog not found. invalid url",
@@ -120,8 +125,21 @@ class BlogDetails(View):
                 contextual_data["blog_title"] = blog.title
                 contextual_data["blog_by"] = blog.by
                 contextual_data["uploaded_at"] = blog.uploaded_at
-                contextual_data["views"] = str(blog.views)
-            
+
+                # now we have to check if the data is there in the caches
+                blog_ip_cache = caches["blog_ip_auth"]
+
+                if not blog_ip_cache.get(ip):
+                    # now we are open to update the views
+                    blog.views += 1
+                    blog.save()
+
+                    # now setting the cache for the ip over here
+                    blog_ip_cache.set(ip, True)
+                
+                contextual_data["views"] = blog.views 
+
+
             # now sending the response over here now with comments
             return render(
                 request,
