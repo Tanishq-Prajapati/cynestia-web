@@ -16,6 +16,31 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import os
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/django_debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -27,7 +52,7 @@ SECRET_KEY = 'django-insecure-bk&#$hr%9c=cl33x2%qp&avijbb=n8#%o%icgs$fotzk61%(91
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.29.123'
+    '*'
 ]
 
 
@@ -40,7 +65,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cynestia_site'
+    'cynestia_site',
+    'markdownify'
 ]
 
 MIDDLEWARE = [
@@ -122,10 +148,63 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-
+STATICFILES_DIRS = []
+STATIC_ROOT = '/var/www/vhosts/cynestia.com/httpdocs/cynestia_web/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Setting up the cache over here
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, "cache", "django_cache"),
+    },
+    "blog_ip_auth":{
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, "cache", "blog_ip_cache"),
+    }
+}
+
+MARKDOWNIFY = {
+   "default": {
+      "WHITELIST_TAGS": [
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul',
+            'h1',
+            'h2',
+            'h3',
+            'table',
+            'tr',
+            'td',
+            'code',
+            'img',
+            'hr'
+        ],
+        "WHITELIST_ATTRS": [
+            'href',
+            'src',
+            'alt',
+        ],
+        "MARKDOWN_EXTENSIONS": [
+            "markdown.extensions.fenced_code", # dotted path
+        ]
+   },
+
+   "alternative": {
+      "WHITELIST_TAGS": ["a", "p", ],
+      "MARKDOWN_EXTENSIONS": ["markdown.extensions.fenced_code", ]
+   }
+}

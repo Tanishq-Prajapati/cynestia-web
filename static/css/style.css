@@ -944,6 +944,13 @@ html{
 
 .back-drop-all-padding{
     padding: 60px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.background-all-padding{
+    padding: 60px;
+    background-color: var(--bs-dark);
     backdrop-filter: blur(10px);
     border-radius: 30px;
 }
@@ -972,6 +979,12 @@ html{
     gap: 30px;
 }
 
+.spacer-less {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 @media screen and (max-width: 600px) {
     .bg-photo{
         background-position-x: 50%;
@@ -983,11 +996,49 @@ html{
     }
 }
 
+.blog-grid-title{
+    font-size: 30px;
+    transition: transform 1s ease;
+}
+
+.blog-grid-desc{
+    font-size: 1rem;
+}
+
+.feature-hero-line-blog{
+    font-size: 80px;
+}
+
+.blog-data{
+    font-size: 1rem;
+}
+
+/* Blogs Details Styling over here */
+.blog-dets p{
+    font-size: 1rem;
+    color: white;
+    line-height: 25px;
+}
+
+.blog-dets h1{
+    color: var(--bs-white);
+}
+
 @media screen and (max-width: 450px) {
+    .blog-grid-title{
+        font-size: 22px;
+    }
+
+    .blog-grid-desc{
+        font-size: 13px;
+    }
     .bg-photo{
         background-position-x: 50%;
     }
     .back-drop-all-padding{
+        padding: 30px;
+    }
+    .background-all-padding{
         padding: 30px;
     }
     .back-drop-all-padding-less{
@@ -996,4 +1047,27 @@ html{
     .feature-hero-line{
         font-size: 50px;
     }
+    .feature-hero-line-blog{
+        font-size: 35px;
+    }
+    .blog-dets p{
+        font-size: 13.5px;
+    }
+}
+
+.blog-door{
+    cursor: pointer;
+    background-color: var(--bs-dark);
+    transition-duration: .3s;
+}
+
+.blog-door:hover{
+    background-color: black;
+    transform: scale(1.02);
+    border: 1px solid white;
+}
+
+/* Creating a small hero-head alternative over here */
+.hero-head-alter h4{
+    font-size: 16px;
 }
