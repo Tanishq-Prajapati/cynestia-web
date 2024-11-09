@@ -141,9 +141,6 @@ html{
     width: 100%;
     background-color: rgba(102, 16, 242, 0.15);
     backdrop-filter: blur(5px);
-    border-radius: 40px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
 }
 
 .navbar-light .navbar-brand img {
