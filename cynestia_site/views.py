@@ -152,3 +152,4 @@ class BlogDetails(View):
                 "bdetails.html",
                 context=contextual_data
             )
+        

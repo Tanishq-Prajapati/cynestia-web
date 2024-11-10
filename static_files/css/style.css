@@ -141,9 +141,6 @@ html{
     width: 100%;
     background-color: rgba(102, 16, 242, 0.15);
     backdrop-filter: blur(5px);
-    border-radius: 40px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
 }
 
 .navbar-light .navbar-brand img {
@@ -165,19 +162,35 @@ html{
     font-family: 'Poppins',sans-serif;
 }
 
+.poppins-medium{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+}
+
+.poppins-bold{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+}
+
 .navbar .navbar-nav .nav-item {
     display: flex;
     align-items: center;
     padding: 15px;
     color: white;
     font-family: 'Poppins',sans-serif;
+    transition: all 0.5s ease-out;
+    background-position: right;
+    height: 20px;
 }
 
 .navbar-light .navbar-nav .nav-item:hover,
 .navbar-light .navbar-nav .nav-item.active,
 .navbar-light .navbar-nav .nav-item:hover .nav-link,
 .navbar-light .navbar-nav .nav-item.active .nav-link {
-    color: var(--bs-indigo);
+    color: black;
+    background: linear-gradient(to right, #ffff 50%, rgba(0,0,0,0) 50%);
+    background-size: 200% 100%;
+    background-position: left;
 }
 
 @media (max-width: 991px) {
@@ -234,7 +247,7 @@ html{
 
 @media (min-width: 992px) {
     .navbar {
-        padding: 13px 0;
+        padding: 20px 0;
     }
 
     .navbar .nav-btn {
@@ -587,6 +600,18 @@ html{
 
 
 /*** Blog Start ***/
+.blog-door{
+    cursor: pointer;
+    background-color: var(--bs-dark);
+    transition-duration: .3s;
+}
+
+.blog-door:hover{
+    background-color: black;
+    transform: scale(1.02);
+    border: 1px solid white;
+}
+
 .blog .blog-item {
     border-radius: 10px;
     transition: 0.5s;
@@ -962,6 +987,12 @@ html{
     font-size: 50px;
 }
 
+.feature-hero-line-small-calender{
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
 .aesthetic-border{
     border: 1.8px solid rgb(73, 73, 73);
 }
@@ -981,9 +1012,52 @@ html{
         height: 110%;
         transform: scale(1);
     }
+    .feature-hero-line-small-calender{
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.blog-grid-desc{
+    font-size: 1rem;
+}
+
+.feature-hero-line-blog{
+    font-size: 80px;
+}
+
+.hero-head-alter h4{
+    font-size: 16px;
+}
+
+/* Blogs Details Styling over here */
+.blog-dets p{
+    font-size: 1rem;
+    color: white;
+    line-height: 25px;
+}
+
+.blog-dets h1{
+    color: var(--bs-white);
+}
+
+.background-all-padding{
+    padding: 60px;
+    background-color: var(--bs-dark);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
 }
 
 @media screen and (max-width: 450px) {
+    .blog-dets p{
+        font-size: 13.5px;
+    }
+    .blog-grid-desc{
+        font-size: 13px;
+    }
+    .feature-hero-line-blog{
+        font-size: 35px;
+    }
     .bg-photo{
         background-position-x: 50%;
     }
@@ -995,5 +1069,8 @@ html{
     }
     .feature-hero-line{
         font-size: 50px;
+    }
+    .background-all-padding{
+        padding: 30px;
     }
 }
