@@ -162,19 +162,35 @@ html{
     font-family: 'Poppins',sans-serif;
 }
 
+.poppins-medium{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+}
+
+.poppins-bold{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 600;
+}
+
 .navbar .navbar-nav .nav-item {
     display: flex;
     align-items: center;
     padding: 15px;
     color: white;
     font-family: 'Poppins',sans-serif;
+    transition: all 0.5s ease-out;
+    background-position: right;
+    height: 20px;
 }
 
 .navbar-light .navbar-nav .nav-item:hover,
 .navbar-light .navbar-nav .nav-item.active,
 .navbar-light .navbar-nav .nav-item:hover .nav-link,
 .navbar-light .navbar-nav .nav-item.active .nav-link {
-    color: var(--bs-indigo);
+    color: black;
+    background: linear-gradient(to right, #ffff 50%, rgba(0,0,0,0) 50%);
+    background-size: 200% 100%;
+    background-position: left;
 }
 
 @media (max-width: 991px) {
@@ -231,7 +247,7 @@ html{
 
 @media (min-width: 992px) {
     .navbar {
-        padding: 13px 0;
+        padding: 20px 0;
     }
 
     .navbar .nav-btn {
@@ -959,6 +975,12 @@ html{
     font-size: 50px;
 }
 
+.feature-hero-line-small-calender{
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
 .aesthetic-border{
     border: 1.8px solid rgb(73, 73, 73);
 }
@@ -977,6 +999,10 @@ html{
         width: 105%;
         height: 110%;
         transform: scale(1);
+    }
+    .feature-hero-line-small-calender{
+        font-size: 30px;
+        margin-bottom: 30px;
     }
 }
 
